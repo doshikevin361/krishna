@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Menu, X, Target, Sparkles } from "lucide-react"
+import { Menu, X, Phone, Mail } from "lucide-react"
+import ExecuraLogo from "@/components/execura-logo"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -19,29 +20,15 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white/95 backdrop-blur-lg shadow-xl border-b border-slate-200/50" : "bg-transparent"
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        isScrolled ? "bg-white/95 backdrop-blur-xl shadow-2xl border-b border-emerald-100/50" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          {/* Animated Logo */}
-          <Link href="/" className="group flex items-center space-x-3">
-            <div className="relative">
-              <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 via-emerald-600 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:shadow-emerald-500/25 transition-all duration-300 group-hover:scale-110 group-hover:rotate-12">
-                <Target className="h-7 w-7 text-white group-hover:rotate-180 transition-transform duration-500" />
-              </div>
-              <div className="absolute -top-1 -right-1 w-4 h-4 bg-gradient-to-r from-emerald-400 to-purple-400 rounded-full animate-pulse"></div>
-            </div>
-            <div className="group-hover:scale-105 transition-transform duration-300">
-              <div className="text-2xl font-bold bg-gradient-to-r from-slate-900 to-slate-700 bg-clip-text text-transparent group-hover:from-emerald-600 group-hover:to-purple-600 transition-all duration-300">
-                Execura
-              </div>
-              <div className="text-xs text-slate-600 -mt-1 group-hover:text-emerald-600 transition-colors duration-300 flex items-center">
-                <Sparkles className="w-3 h-3 mr-1" />
-                The perfect placement
-              </div>
-            </div>
+          {/* Logo */}
+          <Link href="/" className="group">
+            <ExecuraLogo size="md" animated={true} />
           </Link>
 
           {/* Desktop Navigation */}
@@ -49,39 +36,39 @@ export default function Header() {
             {[
               { href: "/", label: "Home" },
               { href: "/services", label: "Services" },
-              { href: "/about", label: "About" },
+              { href: "/about", label: "About Krishna" },
               { href: "/jobs", label: "Jobs" },
               { href: "/contact", label: "Contact" },
             ].map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="relative text-slate-700 hover:text-emerald-600 font-medium transition-all duration-300 group"
+                className="relative text-slate-700 hover:text-emerald-600 font-semibold transition-all duration-300 group py-2"
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-emerald-500 to-purple-500 group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-emerald-500 to-purple-500 group-hover:w-full transition-all duration-300 rounded-full"></span>
               </Link>
             ))}
           </nav>
 
-          {/* Desktop CTA Buttons */}
+          {/* Desktop CTA */}
           <div className="hidden md:flex items-center space-x-4">
             <Button
               variant="outline"
-              className="group border-emerald-500 text-emerald-600 hover:bg-emerald-50 bg-transparent transition-all duration-300 hover:scale-105 hover:shadow-lg"
+              className="group border-2 border-emerald-500 text-emerald-600 hover:bg-emerald-50 bg-transparent transition-all duration-300 hover:scale-105 hover:shadow-lg font-semibold"
             >
-              <Target className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
+              <Mail className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
               For Employers
             </Button>
-            <Button className="group bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white shadow-lg hover:shadow-emerald-500/25 transition-all duration-300 hover:scale-105">
-              <Sparkles className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
-              For Job Seekers
+            <Button className="group bg-gradient-to-r from-emerald-500 via-emerald-600 to-purple-600 hover:from-emerald-600 hover:via-purple-500 hover:to-purple-700 text-white shadow-xl hover:shadow-emerald-500/25 transition-all duration-300 hover:scale-105 font-semibold">
+              <Phone className="w-4 h-4 mr-2 group-hover:rotate-12 transition-transform" />
+              Call Krishna
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors"
+            className="md:hidden p-3 rounded-xl hover:bg-emerald-50 transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X className="h-6 w-6 text-slate-700" /> : <Menu className="h-6 w-6 text-slate-700" />}
@@ -90,19 +77,20 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-6 border-t border-slate-200/50 bg-white/95 backdrop-blur-lg rounded-b-2xl shadow-xl">
+          <div className="md:hidden py-6 border-t border-emerald-100/50 bg-white/95 backdrop-blur-xl rounded-b-3xl shadow-2xl">
             <nav className="flex flex-col space-y-4">
               {[
                 { href: "/", label: "Home" },
                 { href: "/services", label: "Services" },
-                { href: "/about", label: "About" },
+                { href: "/about", label: "About Krishna" },
                 { href: "/jobs", label: "Jobs" },
                 { href: "/contact", label: "Contact" },
               ].map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-slate-700 hover:text-emerald-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-emerald-50"
+                  className="text-slate-700 hover:text-emerald-600 font-semibold transition-colors px-4 py-3 rounded-xl hover:bg-emerald-50"
+                  onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
                 </Link>
@@ -110,14 +98,14 @@ export default function Header() {
               <div className="flex flex-col space-y-3 pt-4 px-4">
                 <Button
                   variant="outline"
-                  className="border-emerald-500 text-emerald-600 bg-transparent hover:bg-emerald-50 justify-center"
+                  className="border-2 border-emerald-500 text-emerald-600 bg-transparent hover:bg-emerald-50 justify-center font-semibold"
                 >
-                  <Target className="w-4 h-4 mr-2" />
+                  <Mail className="w-4 h-4 mr-2" />
                   For Employers
                 </Button>
-                <Button className="bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white justify-center">
-                  <Sparkles className="w-4 h-4 mr-2" />
-                  For Job Seekers
+                <Button className="bg-gradient-to-r from-emerald-500 to-purple-600 hover:from-emerald-600 hover:to-purple-700 text-white justify-center font-semibold">
+                  <Phone className="w-4 h-4 mr-2" />
+                  Call Krishna
                 </Button>
               </div>
             </nav>

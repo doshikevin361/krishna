@@ -68,7 +68,7 @@
   }
 }
 
-/* Custom Animations */
+/* Execura Custom Animations */
 @keyframes gradient-x {
   0%,
   100% {
@@ -128,6 +128,16 @@
   }
 }
 
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(16, 185, 129, 0.6);
+  }
+}
+
 .animate-gradient-x {
   animation: gradient-x 15s ease infinite;
   background-size: 400% 400%;
@@ -153,12 +163,16 @@
   animation: bounce-gentle 2s ease-in-out infinite;
 }
 
-/* Smooth scrolling */
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Smooth scrolling for Execura website */
 html {
   scroll-behavior: smooth;
 }
 
-/* Custom scrollbar */
+/* Custom Execura scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -176,18 +190,31 @@ html {
   background: linear-gradient(to bottom, #059669, #7c3aed);
 }
 
-/* Glassmorphism effect */
+/* Execura glassmorphism effect */
 .glass {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* Gradient text animation */
+/* Execura gradient text animation */
 .gradient-text {
   background: linear-gradient(-45deg, #10b981, #8b5cf6, #06b6d4, #f59e0b);
   background-size: 400% 400%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: gradient-x 3s ease infinite;
+}
+
+/* Execura brand colors */
+.execura-emerald {
+  color: #10b981;
+}
+
+.execura-purple {
+  color: #8b5cf6;
+}
+
+.execura-gradient {
+  background: linear-gradient(135deg, #10b981 0%, #8b5cf6 100%);
 }
